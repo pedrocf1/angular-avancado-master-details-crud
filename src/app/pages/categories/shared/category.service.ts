@@ -17,8 +17,8 @@ export class CategoryService {
 
   getAll(): Observable<Category[]>{
     return this.http.get(this.apiPath).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToCategories)
+      map(this.jsonDataToCategories),
+      catchError(this.handleError)
     )
   }
 
@@ -26,15 +26,15 @@ export class CategoryService {
     const url = `${this.apiPath}/${id}`
 
     return this.http.get(url).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToCategory)
+      map(this.jsonDataToCategory),
+      catchError(this.handleError)
     )
   }
 
   create(category: Category): Observable<Category>{
     return this.http.post(this.apiPath, category).pipe(
-      catchError(this.handleError),
-      map(this.jsonDataToCategory)
+      map(this.jsonDataToCategory),
+      catchError(this.handleError)
     )
   }
 
@@ -42,8 +42,8 @@ export class CategoryService {
     const url = `${this.apiPath}/${category.id}`
 
     return this.http.put(url, category).pipe(
-      catchError(this.handleError),
-      map(()=> category)//estou retornando ele mesmo por que o InMemory não retorna nada em um update
+      map(()=> category),//estou retornando ele mesmo por que o InMemory não retorna nada em um update
+      catchError(this.handleError)
     )
   }
 
@@ -51,8 +51,8 @@ export class CategoryService {
     const url = `${this.apiPath}/${id}`
 
     return this.http.delete(url).pipe(
-      catchError(this.handleError),
-      map(()=> null)
+      map(()=> null),
+      catchError(this.handleError)
     )
   }
 

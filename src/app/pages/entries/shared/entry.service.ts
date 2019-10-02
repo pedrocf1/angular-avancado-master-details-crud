@@ -9,7 +9,7 @@ import { Entry } from './entry.model';
 @Injectable({
   providedIn: 'root'
 })
-export class CategoryService {
+export class EntryService {
 
   private apiPath: string = "api/entries"
 

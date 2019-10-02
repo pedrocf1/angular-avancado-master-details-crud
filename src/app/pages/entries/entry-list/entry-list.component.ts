@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { Entry } from "../shared/entry.model";
-import { CategoryService } from "../shared/entry.service";
+import { EntryService } from "../shared/entry.service";
 
 @Component({
   selector: 'app-entry-list',
@@ -12,10 +12,10 @@ export class EntryListComponent implements OnInit {
 
   entries:Entry[] = []
 
-  constructor(private categoryService: CategoryService) { }
+  constructor(private entryService: EntryService) { }
 
   ngOnInit() {
-    this.categoryService.getAll().subscribe(
+    this.entryService.getAll().subscribe(
       entries => this.entries = entries,
       error => alert('Erro ao carregar a lista'))
   }
@@ -25,7 +25,7 @@ export class EntryListComponent implements OnInit {
     const mustDelete = confirm("Deseja realmente excluir esse item?")
 
     mustDelete&&
-    this.categoryService.delete(entry.id).subscribe(
+    this.entryService.delete(entry.id).subscribe(
       ()=> this.entries = this.entries.filter(element => element != entry),
       ()=> alert("Erro ao tentar excluir")
     )
