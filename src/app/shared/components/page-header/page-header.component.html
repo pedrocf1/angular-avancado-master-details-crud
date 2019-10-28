@@ -2,7 +2,9 @@
     <div class="col-md">
         <h1 class="h2 border-left ld-2">{{pageTitle}}</h1>
     </div>
-    <div class="col-md">
-        <a [routerLink]="new" class="btn btn-success float-right">+ Novo Lançamento</a>
+    <div class="col-md text-right">
+        <a [routerLink]="buttonLink" class="btn" [ngClass]="buttonClass">
+            {{buttonText}}
+        </a>
     </div>
 </div>
